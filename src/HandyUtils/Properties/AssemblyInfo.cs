@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // Управление общими сведениями о сборке осуществляется с помощью
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("Joker_vD.HandyUtils")]
+[assembly: AssemblyTitle("HandyUtils")]
 [assembly: AssemblyDescription("Some useful C# utils")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Joker_vD")]
