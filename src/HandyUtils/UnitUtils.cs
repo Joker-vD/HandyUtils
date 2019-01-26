@@ -25,5 +25,15 @@ namespace HandyUtils
                 return Unit.Default;
             };
         }
+
+        public static Action AsAction(this Func<Unit> func)
+        {
+            return () => func();
+        }
+
+        public static Action<T> AsAction<T>(this Func<T, Unit> func)
+        {
+            return (arg) => func(arg);
+        }
     }
 }

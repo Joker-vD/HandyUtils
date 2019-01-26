@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HandyUtils
 {
-    public class HashUtils
+    public static class HashUtils
     {
         public static int Combine(int h1, int h2)
         {
