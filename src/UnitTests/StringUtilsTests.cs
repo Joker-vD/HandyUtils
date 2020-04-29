@@ -94,5 +94,15 @@ namespace UnitTests
         {
             "test".TruncateMiddle(3);
         }
+
+        [TestMethod]
+        public void Test_AppendLines()
+        {
+            var sb = new StringBuilder();
+            var sb1 = sb.AppendLines(Enumerable.Repeat("test", 2));
+
+            Assert.AreSame(sb, sb1);
+            Assert.AreEqual("test{0}test{0}".FormatWith(Environment.NewLine), sb.ToString());
+        }
     }
 }

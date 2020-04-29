@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HandyUtils
 {
-    public static class TypeUtils
+    public static class ReflectionUtils
     {
         public static bool ImplementsGenericInterface(Type type, Type genericInterfaceType, out Type implementingType)
         {

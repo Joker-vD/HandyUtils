@@ -74,5 +74,11 @@ namespace HandyUtils
 
             return sb.ToString();
         }
+
+        public static StringBuilder AppendLines(this StringBuilder sb, IEnumerable<string> lines)
+        {
+            lines.ForEach((line, _) => sb.AppendLine(line));
+            return sb;
+        }
     }
 }

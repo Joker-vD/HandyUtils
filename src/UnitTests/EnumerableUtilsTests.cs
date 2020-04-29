@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using HandyUtils;
 using System.Collections.Specialized;
+using System.Linq;
 
 namespace UnitTests
 {
@@ -51,6 +52,33 @@ namespace UnitTests
         }
 
         [TestMethod]
+        public void TestToPrefixedItemsString_EmptySequence()
+        {
+            var expected = "test";
+            var actual = new string[] { }.ToPrefixedItemsString("test");
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TestToPrefixedItemsString_SingletonSequence()
+        {
+            var expected = "test, 1";
+            var actual = new string[] { "1" }.ToPrefixedItemsString("test");
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TestToPrefixedItemsString_LongSequence()
+        {
+            var expected = "test, 1, 2";
+            var actual = new string[] { "1", "2" }.ToPrefixedItemsString("test");
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
         public void TestAssignFrom()
         {
             var dict = new StringDictionary();
@@ -65,6 +93,15 @@ namespace UnitTests
             Assert.IsTrue(dict.Count == 2);
             Assert.IsTrue(dict["a"] == "1");
             Assert.IsTrue(dict["b"] == "2");
+        }
+
+        [TestMethod]
+        public void TestSingleton()
+        {
+            var singleton = EnumerableUtils.Singleton("test").ToList();
+
+            Assert.AreEqual(1, singleton.Count);
+            Assert.AreEqual("test", singleton[0]);
         }
     }
 }
