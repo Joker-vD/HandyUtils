@@ -48,6 +48,11 @@ namespace HandyUtils
         {
             yield return element;
         }
+
+        public static IEnumerable<T> Sequence<T>(params T[] elements)
+        {
+            return elements;
+        }
     }
 }
 
