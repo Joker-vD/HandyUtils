@@ -26,14 +26,17 @@ namespace HandyUtils
         public static string ToItemsString<T>(this IEnumerable<T> list, Func<T, string> converter, string separator) =>
             string.Join(separator, list.Select(converter));
 
-        public static string ToPrefixedItemsString<T>(this IEnumerable<T> list, string prefix) =>
-            list.ToPrefixedItemsString(prefix, DefaultItemsSeparator);
+        public static string ToPrefixedItemsString<T>(this IEnumerable<T> list) =>
+            list.ToPrefixedItemsString(item => item.ToString(), DefaultItemsSeparator);
 
-        public static string ToPrefixedItemsString<T>(this IEnumerable<T> list, string prefix, string separator) =>
-            list.ToPrefixedItemsString(prefix, separator, item => item.ToString());
+        public static string ToPrefixedItemsString<T>(this IEnumerable<T> list, Func<T, string> converter) =>
+            list.ToPrefixedItemsString(converter, DefaultItemsSeparator);
 
-        public static string ToPrefixedItemsString<T>(this IEnumerable<T> list, string prefix, string separator, Func<T, string> converter) =>
-            string.Join(separator, Singleton(prefix).Concat(list.Select(converter)));
+        public static string ToPrefixedItemsString<T>(this IEnumerable<T> list, string separator) =>
+            list.ToPrefixedItemsString(item => item.ToString(), separator);
+
+        public static string ToPrefixedItemsString<T>(this IEnumerable<T> list, Func<T, string> converter, string separator) =>
+            string.Join("", list.Select(item => "{0}{1}".FormatWith(separator, converter(item))));
 
         public static void AssignFrom(this StringDictionary dict, IReadOnlyDictionary<string, string> data)
         {

@@ -54,8 +54,8 @@ namespace UnitTests
         [TestMethod]
         public void TestToPrefixedItemsString_EmptySequence()
         {
-            var expected = "test";
-            var actual = new string[] { }.ToPrefixedItemsString("test");
+            var expected = "";
+            var actual = new string[] { }.ToPrefixedItemsString();
 
             Assert.AreEqual(expected, actual);
         }
@@ -63,8 +63,8 @@ namespace UnitTests
         [TestMethod]
         public void TestToPrefixedItemsString_SingletonSequence()
         {
-            var expected = "test, 1";
-            var actual = new string[] { "1" }.ToPrefixedItemsString("test");
+            var expected = ", 1";
+            var actual = new string[] { "1" }.ToPrefixedItemsString();
 
             Assert.AreEqual(expected, actual);
         }
@@ -72,8 +72,8 @@ namespace UnitTests
         [TestMethod]
         public void TestToPrefixedItemsString_LongSequence()
         {
-            var expected = "test, 1, 2";
-            var actual = new string[] { "1", "2" }.ToPrefixedItemsString("test");
+            var expected = ", 1, 2";
+            var actual = new string[] { "1", "2" }.ToPrefixedItemsString();
 
             Assert.AreEqual(expected, actual);
         }
