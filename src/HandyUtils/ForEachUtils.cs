@@ -10,10 +10,20 @@ namespace HandyUtils
     {
         public static void ForEach<T>(this IEnumerable<T> items, Action<T, int> action)
         {
-            var index = 0;
-            foreach (var item in items)
+            var list = items as IList<T>;
+            if (list != null) {
+                for (int i = 0; i < list.Count; i++)
+                {
+                    action(list[i], i);
+                }
+            }
+            else
             {
-                action(item, index++);
+                var index = 0;
+                foreach (var item in items)
+                {
+                    action(item, index++);
+                }
             }
         }
     }

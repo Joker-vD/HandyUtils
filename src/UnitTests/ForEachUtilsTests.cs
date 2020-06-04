@@ -23,5 +23,18 @@ namespace UnitTests
             var actual = sb.ToString();
             Assert.AreEqual("0:a,1:b,2:c,", actual);
         }
+
+        [TestMethod]
+        public void TestMutateListInForEach()
+        {
+            var list = new List<string> { "a", "b", "c" };
+
+            list.ForEach((item, index) =>
+            {
+                list[index] = item.ToUpperInvariant();
+            });
+
+            Assert.AreEqual("A, B, C", list.ToItemsString());
+        }
     }
 }
