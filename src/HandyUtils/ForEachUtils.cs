@@ -11,7 +11,8 @@ namespace HandyUtils
         public static void ForEach<T>(this IEnumerable<T> items, Action<T, int> action)
         {
             var list = items as IList<T>;
-            if (list != null) {
+            if (list != null)
+            {
                 for (int i = 0; i < list.Count; i++)
                 {
                     action(list[i], i);
@@ -24,6 +25,14 @@ namespace HandyUtils
                 {
                     action(item, index++);
                 }
+            }
+        }
+
+        public static void ForEach<T>(this IEnumerable<T> items, Action<T> action)
+        {
+            foreach (var item in items)
+            {
+                action(item);
             }
         }
     }

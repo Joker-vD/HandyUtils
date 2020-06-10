@@ -36,5 +36,20 @@ namespace UnitTests
 
             Assert.AreEqual("A, B, C", list.ToItemsString());
         }
+
+        [TestMethod]
+        public void TestForEachWithoutIndex()
+        {
+            var list = new List<string> { "a", "b", "c" };
+            var sb = new StringBuilder();
+
+            ((IEnumerable<string>)list).ForEach((item) =>
+            {
+                sb.AppendFormat("'{0}',", item);
+            });
+
+            var actual = sb.ToString();
+            Assert.AreEqual("'a','b','c',", actual);
+        }
     }
 }
